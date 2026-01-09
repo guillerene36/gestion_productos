@@ -1,0 +1,25 @@
+<odoo>
+    <data>
+        <record id="rule_productos_por_unidad" model="ir.rule">
+            <field name="name">Productos: Filtro Estricto</field>
+            <field name="model_id" ref="model_gestion_productos"/>
+            <field name="groups" eval="[(4, ref('group_gestion_user'))]"/>
+            <field name="domain_force">[('unidad_negocio_ids', 'in', user.unidad_negocio_ids.ids)]</field>
+        </record>
+
+        <record id="rule_unidad_negocio_propia" model="ir.rule">
+            <field name="name">Unidades: Ver solo las mías</field>
+            <field name="model_id" ref="model_gestion_unidad_negocio"/>
+            <field name="groups" eval="[(4, ref('group_gestion_user'))]"/>
+            <field name="domain_force">[('id', 'in', user.unidad_negocio_ids.ids)]</field>
+        </record>
+
+        <record id="rule_unidad_negocio_admin_all" model="ir.rule">
+            <field name="name">Unidades: Admin ve todo</field>
+            <field name="model_id" ref="model_gestion_unidad_negocio"/>
+            <field name="groups" eval="[(4, ref('group_gestion_admin'))]"/>
+            <field name="domain_force">[(1, '=', 1)]</field>
+        </record>
+
+    </data>
+</odoo>

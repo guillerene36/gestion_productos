@@ -1,0 +1,23 @@
+{
+    'name': 'Gestión de Productos y Partes',
+    'version': '1.2',
+    'author': 'Sinergia',
+    'category': 'Inventory',
+    'summary': 'Gestión con Reportes PDF y Diccionarios',
+    'depends': ['base', 'mail'],
+    'data': [
+        'security/security_groups.xml',
+        'security/ir.model.access.csv',
+        'security/ir_rule.xml',
+        'data/datos_iniciales.xml',
+        'views/res_users_views.xml',
+        'views/productos_views.xml',
+        'views/partes_views.xml',
+        'views/mi_menu.xml',
+        'reports/reporte_productos.xml',
+        'reports/reporte_diccionario.xml', 
+    ],
+    'installable': True,
+    'application': True,
+    'license': 'LGPL-3',
+}

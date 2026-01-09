@@ -1,0 +1,33 @@
+<odoo>
+    <record id="action_unidad_negocio" model="ir.actions.act_window">
+        <field name="name">Unidades de Negocio</field>
+        <field name="res_model">gestion.unidad.negocio</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <record id="view_unidad_negocio_tree" model="ir.ui.view">
+        <field name="name">gestion.unidad.negocio.tree</field>
+        <field name="model">gestion.unidad.negocio</field>
+        <field name="arch" type="xml">
+            <list string="Unidades de Negocio">
+                <field name="name"/>
+                <field name="descripcion"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_unidad_negocio_form" model="ir.ui.view">
+        <field name="name">gestion.unidad.negocio.form</field>
+        <field name="model">gestion.unidad.negocio</field>
+        <field name="arch" type="xml">
+            <form string="Unidad de Negocio">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="descripcion"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>

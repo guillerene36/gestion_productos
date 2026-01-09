@@ -1,0 +1,87 @@
+<odoo>
+    <data noupdate="0">
+        
+        <record id="unidad_jumbo" model="gestion.unidad.negocio">
+            <field name="name">Jumbo</field>
+            <field name="descripcion">Supermercado Premium</field>
+        </record>
+        <record id="unidad_easy" model="gestion.unidad.negocio">
+            <field name="name">Easy</field>
+            <field name="descripcion">Mejoramiento del Hogar</field>
+        </record>
+        <record id="unidad_santa_isabel" model="gestion.unidad.negocio">
+            <field name="name">Santa Isabel</field>
+            <field name="descripcion">Supermercado de Conveniencia</field>
+        </record>
+        <record id="unidad_paris" model="gestion.unidad.negocio">
+            <field name="name">Paris</field>
+            <field name="descripcion">Tiendas por Departamento</field>
+        </record>
+
+        <record id="user_cajero_jumbo" model="res.users">
+            <field name="name">Cajero Jumbo</field>
+            <field name="login">jumbo@test.com</field>
+            <field name="password">123</field>
+            <field name="email">jumbo@test.com</field>
+            <field name="unidad_negocio_ids" eval="[(4, ref('unidad_jumbo'))]"/>
+            <field name="groups_id" eval="[(4, ref('base.group_user')), (4, ref('FINAL8.group_gestion_user'))]"/>
+        </record>
+
+        <record id="user_vendedor_easy" model="res.users">
+            <field name="name">Vendedor Easy</field>
+            <field name="login">easy@test.com</field>
+            <field name="password">123</field>
+            <field name="email">easy@test.com</field>
+            <field name="unidad_negocio_ids" eval="[(4, ref('unidad_easy'))]"/>
+            <field name="groups_id" eval="[(4, ref('base.group_user')), (4, ref('FINAL8.group_gestion_user'))]"/>
+        </record>
+
+        <record id="user_cajero_santa" model="res.users">
+            <field name="name">Cajero Santa Isabel</field>
+            <field name="login">santa@test.com</field>
+            <field name="password">123</field>
+            <field name="email">santa@test.com</field>
+            <field name="unidad_negocio_ids" eval="[(4, ref('unidad_santa_isabel'))]"/>
+            <field name="groups_id" eval="[(4, ref('base.group_user')), (4, ref('FINAL8.group_gestion_user'))]"/>
+        </record>
+
+        <record id="user_vendedor_paris" model="res.users">
+            <field name="name">Vendedor Paris</field>
+            <field name="login">paris@test.com</field>
+            <field name="password">123</field>
+            <field name="email">paris@test.com</field>
+            <field name="unidad_negocio_ids" eval="[(4, ref('unidad_paris'))]"/>
+            <field name="groups_id" eval="[(4, ref('base.group_user')), (4, ref('FINAL8.group_gestion_user'))]"/>
+        </record>
+
+        <record id="demo_producto_1" model="gestion.productos">
+            <field name="name">Laptop Pro X1</field>
+            <field name="tipo">bien</field>
+            <field name="codigo">LP-001</field>
+            <field name="origen">imp</field>
+            <field name="cantidad_vendida">15</field>
+            <field name="unidad_negocio_ids" eval="[(4, ref('unidad_paris')), (4, ref('unidad_easy'))]"/>
+        </record>
+        <record id="demo_producto_2" model="gestion.productos">
+            <field name="name">Mantenimiento Preventivo</field>
+            <field name="tipo">servicio</field>
+            <field name="codigo">SERV-002</field>
+            <field name="origen">nac</field>
+            <field name="cantidad_vendida">50</field>
+            <field name="unidad_negocio_ids" eval="[(4, ref('unidad_jumbo')), (4, ref('unidad_easy')), (4, ref('unidad_santa_isabel')), (4, ref('unidad_paris'))]"/>
+        </record>
+        <record id="demo_producto_3" model="gestion.productos">
+            <field name="name">Panadería Granel</field>
+            <field name="tipo">bien</field>
+            <field name="codigo">PAN-001</field>
+            <field name="origen">nac</field>
+            <field name="cantidad_vendida">500</field>
+            <field name="unidad_negocio_ids" eval="[(4, ref('unidad_jumbo')), (4, ref('unidad_santa_isabel'))]"/>
+        </record>
+
+        <record id="demo_parte_1" model="gestion.partes">
+            <field name="name">Memoria RAM 32GB</field>
+            <field name="producto_id" ref="demo_producto_1"/>
+        </record>
+    </data>
+</odoo>

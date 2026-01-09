@@ -1,0 +1,7 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_prod_user,access.prod.user,model_gestion_productos,group_gestion_user,1,0,0,0
+access_prod_admin,access.prod.admin,model_gestion_productos,group_gestion_admin,1,1,1,1
+access_part_user,access.part.user,model_gestion_partes,group_gestion_user,1,0,0,0
+access_part_admin,access.part.admin,model_gestion_partes,group_gestion_admin,1,1,1,1
+access_unidad_user,access.unidad.user,model_gestion_unidad_negocio,group_gestion_user,1,0,0,0
+access_unidad_admin,access.unidad.admin,model_gestion_unidad_negocio,group_gestion_admin,1,1,1,1

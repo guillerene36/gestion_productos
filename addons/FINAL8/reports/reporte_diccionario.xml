@@ -1,0 +1,62 @@
+<odoo>
+    <data>
+        <record id="action_report_diccionario" model="ir.actions.report">
+            <field name="name">Reporte Desde Diccionario</field>
+            <field name="model">base</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">FINAL8.reporte_diccionario_template</field>
+        </record>
+
+        <template id="reporte_diccionario_template">
+            <t t-call="web.html_container">
+                <t t-call="web.external_layout">
+                    <div class="page" style="font-family: Arial, sans-serif; color: #333;">
+                        
+                        <div class="row mb-4">
+                            <div class="col-12">
+                                <h2 style="color: #005596;">Reporte Externo (Python Dict)</h2>
+                            </div>
+                        </div>
+
+                        <div class="row mb-4">
+                            <div class="col-6">
+                                <strong>Cliente:</strong> <br/>
+                                <span t-esc="mis_datos.get('cliente', 'N/A')"/>
+                            </div>
+                            <div class="col-6 text-right">
+                                <strong>Fecha:</strong> <br/>
+                                <span t-esc="mis_datos.get('fecha', '')"/>
+                            </div>
+                        </div>
+
+                        <table class="table table-borderless mt-4">
+                            <thead style="border-bottom: 1px solid #000;">
+                                <tr>
+                                    <th>Item</th>
+                                    <th class="text-right">Cant</th>
+                                    <th class="text-right">Precio</th>
+                                    <th class="text-right">Total</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr t-foreach="mis_datos.get('items', [])" t-as="item">
+                                    <td><span t-esc="item['nombre']"/></td>
+                                    <td class="text-right"><span t-esc="item['cantidad']"/></td>
+                                    <td class="text-right">$ <span t-esc="item['precio']"/></td>
+                                    <td class="text-right">$ <span t-esc="item['total']"/></td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <div class="row justify-content-end mt-2">
+                            <div class="col-4 text-right">
+                                <strong>Total General:</strong>
+                                $ <span t-esc="mis_datos.get('total_final', 0)"/>
+                            </div>
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </template>
+    </data>
+</odoo>

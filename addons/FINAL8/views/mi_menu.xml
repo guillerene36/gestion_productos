@@ -1,0 +1,16 @@
+<odoo>
+    <menuitem id="menu_root_gestion"
+	 name="Gestión de Partes"
+	 sequence="1"/>
+    
+    <menuitem id="menu_productos_main" 
+              name="Productos" 
+              parent="menu_root_gestion" 
+              action="action_productos" 
+              sequence="1"/>	
+<menuitem id="menu_partes_main"
+	 name="Partes"
+	 parent="menu_root_gestion"
+	 action="action_partes"
+	 sequence="20"/>
+</odoo>

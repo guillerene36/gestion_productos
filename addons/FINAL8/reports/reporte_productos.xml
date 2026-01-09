@@ -1,0 +1,102 @@
+<odoo>
+    <data>
+        <record id="action_report_ficha_producto" model="ir.actions.report">
+            <field name="name">Ficha Técnica (Estilo Retail)</field>
+            <field name="model">gestion.productos</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">FINAL8.report_ficha_producto_template</field>
+            <field name="report_file">FINAL8.report_ficha_producto_template</field>
+            <field name="print_report_name">'Reporte - %s' % object.codigo</field>
+            <field name="binding_model_id" ref="model_gestion_productos"/>
+            <field name="binding_type">report</field>
+        </record>
+
+        <template id="report_ficha_producto_template">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <t t-call="web.external_layout">
+                        <div class="page" style="font-family: Arial, sans-serif; font-size: 14px; color: #333;">
+                            
+                            <div class="row mb-4">
+                                <div class="col-12">
+                                    <h2 style="color: #005596; font-weight: normal; margin-bottom: 20px;">
+                                        Reporte Producto
+                                    </h2>
+                                </div>
+                            </div>
+
+                            <div class="row mb-5">
+                                <div class="col-12">
+                                    <div class="mb-3">
+                                        <strong>SKU:</strong><br/>
+                                        <span t-field="o.codigo"/>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <strong>Producto:</strong><br/>
+                                        <span t-field="o.name"/>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <strong>Origen / Procedencia:</strong><br/>
+                                        <span t-field="o.origen"/>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <strong>Marca / Unidad:</strong><br/>
+                                        <t t-foreach="o.unidad_negocio_ids" t-as="u">
+                                            <span t-field="u.name"/> 
+                                        </t>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row mt-4">
+                                <div class="col-12">
+                                    <h3 style="color: #333; font-weight: bold; border-bottom: 0px; font-size: 18px;">Partes</h3>
+                                </div>
+                            </div>
+
+                            <table class="table table-borderless mt-2" style="font-size: 13px;">
+                                <thead style="border-bottom: 1px solid #000; color: #000;">
+                                    <tr>
+                                        <th style="padding-left: 0;">Nombre</th>
+                                        <th>Categoría</th>
+                                        <th>Material</th>
+                                        <th class="text-right">ID Ref</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr t-foreach="o.partes_ids" t-as="parte" style="border-bottom: 1px solid #eee;">
+                                        <td style="padding-left: 0; padding-top: 8px; padding-bottom: 8px;">
+                                            <span t-field="parte.name"/>
+                                        </td>
+                                        <td style="padding-top: 8px; padding-bottom: 8px;">
+                                            General
+                                        </td>
+                                        <td style="padding-top: 8px; padding-bottom: 8px;">
+                                            Estándar
+                                        </td>
+                                        <td class="text-right" style="padding-top: 8px; padding-bottom: 8px;">
+                                            <span t-field="parte.id"/>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <div class="row justify-content-end mt-2">
+                                <div class="col-4 text-right">
+                                    <div style="padding-top: 5px;">
+                                        <strong>Total Partes:</strong>
+                                        <span style="margin-left: 10px;" t-esc="len(o.partes_ids)"/>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </t>
+                </t>
+            </t>
+        </template>
+    </data>
+</odoo>
